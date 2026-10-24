@@ -1,0 +1,2 @@
+Hello AWS
+This is a message coming from Kidus Tessema!
