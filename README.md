@@ -65,7 +65,7 @@
 
 - What are the difference
 
-| | Column2 | Column3 |
+| | Is connected to the server | Reason of failure |
 | --------------- | --------------- | --------------- |
 | DNS Failure | No Connection | Due to wrong domain name or DNS provider |
 | Connection Timeout | Maybe but it will be silent | Due to server outage, network issue or strict firewall |
@@ -86,7 +86,7 @@
 
 #### Troubleshooting Practice
 
-| Column1 | Column2 | Column3 |
+| Issue | Suspected Component | Reason of choice |
 | --------------- | --------------- | --------------- |
 | A domain name does not resolve to an IP address | DNS | DNS is responsible for translation of domain name to IP address hence will be the prime suspect to look into |
 | A domain resolves, but the browser connection times out | network connectivity | Connection timeout usually indicate that the browser and server weren't able to connect due to network on either side |
