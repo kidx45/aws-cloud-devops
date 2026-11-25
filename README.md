@@ -2,4 +2,4 @@
 
 #### CheckList
 
-- [x] Introduction to Relational Database Service (RDS) linux - Completed
+- [x] Introduction to AWS Identity And Access Management (IAM) - Completed
