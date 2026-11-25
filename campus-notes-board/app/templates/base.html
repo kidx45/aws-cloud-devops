@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Campus Notes Board{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1><a href="{{ url_for('index') }}">Campus Notes Board</a></h1>
+      <p>Share and find lecture notes, tutorials and assignments as PDFs.</p>
+    </div>
+  </header>
+  <main class="wrap">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="wrap site-footer">
+    <p>Starter application for AWS Student Builder Group, Project 01.</p>
+  </footer>
+</body>
+</html>

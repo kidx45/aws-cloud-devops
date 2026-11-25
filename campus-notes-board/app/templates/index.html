@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+{% if message %}
+<p class="notice notice-{{ kind }}" role="{{ 'alert' if kind == 'error' else 'status' }}">{{ message }}</p>
+{% endif %}
+
+<div class="layout">
+  <section class="panel" aria-labelledby="upload-heading">
+    <h2 id="upload-heading">Share a note</h2>
+    <form method="post" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+      <label for="title">Title</label>
+      <input id="title" name="title" type="text" maxlength="255" required value="{{ form.get('title', '') }}">
+
+      <label for="course_name">Course</label>
+      <input id="course_name" name="course_name" type="text" maxlength="150" required value="{{ form.get('course_name', '') }}">
+
+      <label for="description">Description <span class="hint">(optional)</span></label>
+      <textarea id="description" name="description" rows="4" maxlength="2000">{{ form.get('description', '') }}</textarea>
+
+      <label for="file">PDF file <span class="hint">(up to {{ max_mb }} MB)</span></label>
+      <input id="file" name="file" type="file" accept="application/pdf,.pdf" required>
+
+      <button type="submit">Upload note</button>
+    </form>
+  </section>
+
+  <section aria-labelledby="notes-heading">
+    <h2 id="notes-heading">Available notes</h2>
+    {% if notes %}
+    <ul class="notes">
+      {% for n in notes %}
+      <li class="note">
+        <div class="note-main">
+          <h3>{{ n.title }}</h3>
+          <p class="course">{{ n.course_name }}</p>
+          {% if n.description %}<p class="desc">{{ n.description }}</p>{% endif %}
+        </div>
+        <div class="note-side">
+          {% if n.created_at %}<time datetime="{{ n.created_at.strftime('%Y-%m-%dT%H:%M:%S') }}">{{ n.created_at.strftime('%d %b %Y') }}</time>{% endif %}
+          <a class="button-link" href="{{ url_for('download', note_id=n.id) }}">Download PDF</a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% elif db_ok %}
+    <p class="empty">No notes yet. Use the form to upload the first one.</p>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}
